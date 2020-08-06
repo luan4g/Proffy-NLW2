@@ -26,6 +26,13 @@ function TeacherForm() {
     { week_day: 0, from: '', to: '' }
   ])
   
+  function addNewScheduleItem() {
+    setScheduleItems([
+      ...scheduleItems,
+      { week_day: 0, from: '', to: '' }
+    ])
+  }
+  
   function setScheduleItemValue(position: number, field: string, value: string) {
     const updatedSchedulesItems = scheduleItems.map((scheduleItem, index) => {
       if (index === position) {
@@ -37,18 +44,11 @@ function TeacherForm() {
 
     setScheduleItems(updatedSchedulesItems);
   }
-  
-  function addNewScheduleItem() {
-    setScheduleItems([
-      ...scheduleItems,
-      { week_day: 0, from: '', to: '' }
-    ])
-  }
 
-  function handleCreateClass(e: FormEvent) {
+  async function handleCreateClass(e: FormEvent) {
     e.preventDefault();
 
-    api.post('classes', {
+    await api.post('classes', {
       name,
       avatar,
       whatsapp,
@@ -148,7 +148,7 @@ function TeacherForm() {
                       { value: '0', label: 'Domingo' },
                       { value: '1', label: 'Segunda-feira' },
                       { value: '2', label: 'Terça-feira' },
-                      { value: '3 Física', label: 'Quarta-feira' },
+                      { value: '3', label: 'Quarta-feira' },
                       { value: '4', label: 'Quinta-feira' },
                       { value: '5', label: 'Sexta-feira' },
                       { value: '6', label: 'Sábado' },
