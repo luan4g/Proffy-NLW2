@@ -35,24 +35,24 @@ export default class ClassesController {
           .whereRaw("`class_schedule`.`to` > ??", [timeInMinutes]);
       })
       .where("classes.subject", "=", subject)
-      .join("users", "classes.user_id", "=", "users.id")
-      .select(["classes.*", "users.*"]);
+      .join("user_classes", "classes.user_id", "=", "user_classes.id")
+      .select(["classes.*", "user_classes.*"]);
 
     return res.json(classes);
   }
 
   async create(req: Request, res: Response) {
-    const { name, avatar, whatsapp, bio, subject, cost, schedule } = req.body;
+    const { whatsapp, bio, subject, cost, schedule } = req.body;
 
     const trx = await db.transaction();
 
+    const user = {
+      whatsapp,
+      bio,
+    };
+
     try {
-      const insertedUsersIds = await trx("users").insert({
-        name,
-        avatar,
-        whatsapp,
-        bio,
-      });
+      const insertedUsersIds = await trx("user_classes").insert(user);
 
       const user_id = insertedUsersIds[0];
 
