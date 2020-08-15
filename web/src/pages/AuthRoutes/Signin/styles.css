@@ -1,0 +1,260 @@
+.all {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.all aside {
+  width: 0vw;
+  display: none;
+}
+
+.all main {
+  width: 75vw;
+  align-self: center;
+}
+
+main .form h2 {
+  font: 600 3.2rem Poppins;
+  color: var(--color-text-title);
+  margin-bottom: 2.4rem;
+}
+
+main .form span, label, a {
+  font: 400 1.4rem Poppins;
+}
+
+main .input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+main .input-group .input {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-line-in-white);
+  background-color: #fff;
+  border-radius: 0.8rem 0.8rem 0 0;
+}
+
+main .input-group .input + .input {
+  border-radius: 0 0 0.8rem 0.8rem;
+}
+
+main .input-group label {
+  font: 400 1.2rem Poppins;
+  padding: 1.4rem 2rem 0.2rem 2rem;
+  color: var(--color-text-complement);
+}
+
+main .input-group input {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  padding: 0 2rem 1.4rem 2rem;
+  color: var(--color-text-base);
+}
+
+main .input-group .input:focus-within::after {
+  position: absolute;
+  content: "";
+  width: 2px;
+  height: 5rem;
+  border-radius: 1.6rem;
+  margin-top: 1.2rem;
+  background-color: var(--color-primary-lighter);
+}
+
+main .row {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main .checkbox {
+  display: block;
+  position: relative;
+  font: 400 1.4rem Poppins;
+  color: var(--color-text-base);
+  padding-left: 3rem;
+  cursor: pointer;
+}
+
+main .checkbox:hover {
+  color: var(--color-text-complement);
+}
+
+main .checkbox input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+main .checkbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2.4rem;
+  width: 2.4rem;
+  margin-top: -0.2rem;
+  background-color: var(--color-line-in-white);
+  border-radius: 0.8rem;
+}
+
+main .checkbox input:checked ~ .checkmark {
+  background-color: var(--color-secundary);
+}
+
+main .checkbox .checkmark::after {
+  position: absolute;
+  content: "";
+  top: 3px;
+  left: 7px;
+  border: solid white;
+  width: 5px;
+  height: 10px;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+main .form a {
+  text-decoration: none;
+  color: var(--color-text-base);
+}
+
+main .form a:hover {
+  color: var(--color-text-complement);
+}
+
+main button {
+  margin-top: 2.4rem;
+  width: 100%;
+  height: 5.6rem;
+  background-color: var(--color-secundary);
+  border: 0;
+  outline: 0;
+  border-radius: 0.8rem;
+  font: 700 1.6rem Poppins;
+  cursor: pointer;
+  color: var(--color-button-text);
+}
+
+main button:hover {
+  background-color: var(--color-secundary-dark);
+}
+
+footer {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--color-primary);
+  font: 700 1.4rem Poppins;
+}
+
+footer a:hover {
+  color: var(--color-primary-darker);
+}
+
+footer p img {
+  margin-left: 8px;
+}
+
+@media (max-width: 400px) {
+  main .form h2 {
+    margin-top: -50px;
+  }
+
+  main .form span, label, a {
+    font: 400 1.2rem Poppins;
+  }
+
+  footer {
+    bottom: -50px;
+  }
+}
+
+@media (min-width: 700px) {
+  .all {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--color-background);
+  }
+
+  .all aside {
+    width: 55vw;
+    height: 100vh;
+    background-color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+  }
+  
+  .all aside .intro {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .all aside .intro img.logo {
+    width: 50%;
+  }
+  
+  .all aside .intro p {
+    width: 50%;
+    font-size: 1.4rem;
+    color: var(--color-text-in-primary);
+  }
+  
+  .all aside img.background {
+    position: absolute;
+    width: 45vw;
+    height: 100vh;
+    background-size: contain;
+  }
+
+  .all main {
+    width: 55vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main .form {
+    width: 60%;
+  }
+
+  main footer {
+    width: 50%;
+    margin-left: auto;
+  } 
+}
+
+@media (min-width: 900px) {
+  .all aside .intro img.logo {
+    width: 65%;
+  }
+  
+  .all aside .intro p {
+    width: 65%;
+    font-size: 2.6rem;
+  }
+}
