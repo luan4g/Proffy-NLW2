@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Background from '../../../assets/images/background.svg';
 import logo from '../../../assets/images/logo.svg'
 import purpleHeart from '../../../assets/images/icons/purple-heart.svg';
+import showPassword from '../../../assets/images/icons/show-password.svg'
+import hidePassword from '../../../assets/images/icons/hide-password.svg'
 
 import './styles.css';
 
 const Signin = () => {
+  const [passwordVisible, setPasswordVisible] = useState('password')
+  const [iconPassword, setIconPassword] = useState(showPassword)
+
+  function handleVisible() {
+    iconPassword === showPassword
+      ? setPasswordVisible('text')
+      : setPasswordVisible('password')
+
+    passwordVisible === 'password'
+      ? setIconPassword(hidePassword)
+      : setIconPassword(showPassword)
+  }
+
   return (
     <div className="all">
       <aside>
@@ -27,8 +43,11 @@ const Signin = () => {
             </div>
 
             <div className="input">
-              <label htmlFor="Senha">Senha</label>
-              <input type="text" placeholder="Senha" />
+              <div className="column">
+                <label htmlFor="Senha">Senha</label>
+                <input type={passwordVisible} placeholder="Senha"  />
+              </div>
+              <img onClick={handleVisible} src={iconPassword} alt="show"/>
             </div>
           </div>
 
@@ -49,11 +68,11 @@ const Signin = () => {
       
         <footer>
           <p>Não tem conta?<br/>
-            <a href="#">Cadastre-se</a>
+            <Link to="/signup">Cadastre-se</Link>
           </p>
 
           <p>É de graça
-            <img src={purpleHeart} alt=""/>
+            <img src={purpleHeart} alt="Purple heart"/>
           </p>
         </footer>
       </main>

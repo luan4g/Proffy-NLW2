@@ -1,0 +1,9 @@
+main .header {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
+main .form > p {
+  width: 60%;
+}
