@@ -2,7 +2,7 @@ import React, { InputHTMLAttributes } from 'react';
 
 interface InputFormProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string,
-  label: string,
+  label?: string,
 }
 
 const InputForm: React.FC<InputFormProps> = ({ name, label, ...rest }) => {

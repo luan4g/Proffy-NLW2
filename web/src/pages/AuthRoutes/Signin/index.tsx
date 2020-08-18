@@ -8,6 +8,7 @@ import showPassword from '../../../assets/images/icons/show-password.svg'
 import hidePassword from '../../../assets/images/icons/hide-password.svg'
 
 import './styles.css';
+import InputForm from '../../../components/InputForm';
 
 const Signin = () => {
   const [passwordVisible, setPasswordVisible] = useState('password')
@@ -37,10 +38,7 @@ const Signin = () => {
           <h2>Fazer Login</h2>
 
           <div className="input-group">
-            <div className="input">
-              <label htmlFor="Email">E-mail</label>
-              <input type="text" placeholder="Email" />
-            </div>
+            <InputForm name="Email" label="E-mail" placeholder="E-mail" />
 
             <div className="input">
               <div className="column">
@@ -58,12 +56,12 @@ const Signin = () => {
               <span className="checkmark"></span>
             </label>
 
-            <a href="#">Esqueci minha senha</a>
+            <Link to="/reset-password">Esqueci minha senha</Link>
           </div>
 
-          <button>
+          <Link to="" className="button">
             Entrar
-          </button>
+          </Link>
         </div>
       
         <footer>

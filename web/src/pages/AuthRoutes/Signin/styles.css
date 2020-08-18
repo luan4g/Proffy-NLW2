@@ -132,8 +132,8 @@ main .checkbox input:checked ~ .checkmark {
 main .checkbox .checkmark::after {
   position: absolute;
   content: "";
-  top: 4px;
-  left: 8px;
+  top: 5px;
+  left: 9px;
   border: solid white;
   width: 4px;
   height: 9px;
@@ -150,7 +150,8 @@ main .form a:hover {
   color: var(--color-text-complement);
 }
 
-main button {
+main .form a.button {
+  display: block;
   margin-top: 2.4rem;
   width: 100%;
   height: 5.6rem;
@@ -161,9 +162,12 @@ main button {
   font: 700 1.6rem Poppins;
   cursor: pointer;
   color: var(--color-button-text);
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }
 
-main button:hover {
+main .form a.button:hover {
   background-color: var(--color-secundary-dark);
 }
 
@@ -229,7 +233,7 @@ footer p img {
   }
   
   .all aside .intro {
-    width: 100%;
+    width: 70%;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -238,11 +242,11 @@ footer p img {
   }
   
   .all aside .intro img.logo {
-    width: 50%;
+    width: 80%;
   }
   
   .all aside .intro p {
-    width: 50%;
+    width: 80%;
     font-size: 1.4rem;
     color: var(--color-text-in-primary);
   }
@@ -250,7 +254,7 @@ footer p img {
   .all aside img.background {
     position: absolute;
     width: 45vw;
-    height: 100vh;
+    height: 85vh;
     background-size: contain;
   }
 

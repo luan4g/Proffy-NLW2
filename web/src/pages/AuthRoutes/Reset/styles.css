@@ -1,11 +1,29 @@
-main .header {
-  position: absolute;
-  top: 10px;
-  left: 20px;
+.all .form h2 {
+  width: 70%;
 }
 
-main .form > p {
-  width: 60%;
+.all .form p {
+  width: 100%;
+}
+
+.all .input-reset {
+  padding: 1.6rem;
+  background-color: var(--color-box-base);
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.8rem;
+  margin-top: 1.6rem;
+}
+
+.all .input-reset input {
+  border: 0;
+  outline: 0;
+}
+
+.all #off {
+  background-color: var(--color-button-desactivated);
+  color: var(--color-text-complement);
+  cursor: default;
 }
 
 .container-success {

@@ -52,9 +52,9 @@ const Signup = () => {
             </div>
           </div>
 
-          <button>
+          <Link to="/success-signup" className="button">
             Concluir cadastro
-          </button>
+          </Link>
         </div>
       </main>
       <aside>

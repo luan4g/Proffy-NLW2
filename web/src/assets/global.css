@@ -19,6 +19,7 @@
   --color-button-text: #FFFFFF;
   --color-box-base: #FFFFFF;
   --color-box-footer: #FAFAFC;
+  --color-button-desactivated: #DCDCE5;
 }
 
 * {
