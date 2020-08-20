@@ -19,7 +19,7 @@ function SuccessSignup() {
         <p>Agora você faz parte da plataforma Proffy.<br/>Tenha uma ótima experiência.</p>
       </div>
 
-      <Link to="/signin">
+      <Link to="/home">
         Fazer Login
       </Link>
     </div>

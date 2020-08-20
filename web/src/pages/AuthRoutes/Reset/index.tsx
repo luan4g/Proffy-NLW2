@@ -26,7 +26,7 @@ const Reset = () => {
     <div className="all">
       <main>
         <div className="header">
-          <Link to="/signin">
+          <Link to="/home">
             <img src={backIcon} alt="Back"/>
           </Link>
         </div>

@@ -19,7 +19,7 @@ function SuccessReset() {
         <p>Boa, agora é só checar o e-mail que foi enviado para você<br/>redefinir sua senha e aproveitar os estudos.</p>
       </div>
 
-      <Link to="/signin">
+      <Link to="/home">
         Fazer Login
       </Link>
     </div>
