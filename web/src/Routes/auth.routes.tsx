@@ -10,7 +10,7 @@ import SuccessReset from '../pages/AuthRoutes/Reset/success';
 function AuthRoutes() {
   return (
     <BrowserRouter>
-      <Route path="/signin" component={Signin} exact />
+      <Route path="/home" component={Signin} exact />
       <Route path="/signup" component={Signup} exact />
       <Route path="/success-signup" component={SuccessSignup} exact />
       <Route path="/reset-password" component={Reset} exact />

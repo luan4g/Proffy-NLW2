@@ -1,12 +1,15 @@
 import React from 'react';
 
-import Routes from './routes';
+import Routes from './Routes/routes';
 
 import './assets/global.css';
+import AuthContext from './contexts/auth';
 
 function App() {
   return (
-    <Routes />
+    <AuthContext.Provider value={{ signed: false }}>
+      <Routes />
+    </AuthContext.Provider>
   );
 }
 

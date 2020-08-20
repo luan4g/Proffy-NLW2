@@ -4,7 +4,6 @@ import logo from '../../../assets/images/logo.svg';
 import background from '../../../assets/images/background.svg';
 import backIcon from '../../../assets/images/icons/back.svg'
 import { Link } from 'react-router-dom';
-import InputForm from '../../../components/InputForm';
 
 import './styles.css'
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import InputForm from '../../../components/InputForm';
 
 import Background from '../../../assets/images/background.svg';
 import logo from '../../../assets/images/logo.svg'
@@ -8,7 +9,6 @@ import showPassword from '../../../assets/images/icons/show-password.svg'
 import hidePassword from '../../../assets/images/icons/hide-password.svg'
 
 import './styles.css';
-import InputForm from '../../../components/InputForm';
 
 const Signin = () => {
   const [passwordVisible, setPasswordVisible] = useState('password')
