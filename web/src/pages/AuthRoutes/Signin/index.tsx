@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import InputForm from '../../../components/InputForm';
 
@@ -9,10 +9,16 @@ import showPassword from '../../../assets/images/icons/show-password.svg'
 import hidePassword from '../../../assets/images/icons/hide-password.svg'
 
 import './styles.css';
+import AuthContext from '../../../contexts/auth';
 
 const Signin = () => {
+  const { signIn, fchecked, checked } = useContext(AuthContext)
+
   const [passwordVisible, setPasswordVisible] = useState('password')
   const [iconPassword, setIconPassword] = useState(showPassword)
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   function handleVisible() {
     iconPassword === showPassword
@@ -22,6 +28,14 @@ const Signin = () => {
     passwordVisible === 'password'
       ? setIconPassword(hidePassword)
       : setIconPassword(showPassword)
+  }
+
+  function handleSignin() {
+    signIn(email, password);
+  }
+
+  function handleChecked() {
+    fchecked();
   }
 
   return (
@@ -38,12 +52,23 @@ const Signin = () => {
           <h2>Fazer Login</h2>
 
           <div className="input-group">
-            <InputForm name="Email" label="E-mail" placeholder="E-mail" />
+            <InputForm 
+              name="Email" 
+              label="E-mail" 
+              placeholder="E-mail" 
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
 
             <div className="input">
               <div className="column">
                 <label htmlFor="Senha">Senha</label>
-                <input type={passwordVisible} placeholder="Senha"  />
+                <input 
+                  type={passwordVisible} 
+                  placeholder="Senha"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                />
               </div>
               <img onClick={handleVisible} src={iconPassword} alt="show"/>
             </div>
@@ -52,14 +77,14 @@ const Signin = () => {
           <div className="row">
             <label className="checkbox" >
               Lembrar Senha
-              <input type="checkbox"/>
+              <input type="checkbox" checked={checked} onChange={handleChecked} />
               <span className="checkmark"></span>
             </label>
 
             <Link to="/reset-password">Esqueci minha senha</Link>
           </div>
 
-          <Link to="" className="button">
+          <Link to="/home" className="button" onClick={handleSignin}>
             Entrar
           </Link>
         </div>

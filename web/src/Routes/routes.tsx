@@ -7,8 +7,6 @@ import AuthRoutes from './auth.routes';
 function Routes() {
   const { signed } = useContext(AuthContext);
 
-  console.log(signed)
-
   return (
     signed ? <AppRoutes/> : <AuthRoutes/>
   );

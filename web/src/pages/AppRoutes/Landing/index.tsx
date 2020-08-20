@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom'
 import api from '../../../services/api';
+import AuthContext from '../../../contexts/auth';
 
 import logoImg from '../../../assets/images/logo.svg';
 import landingImg from '../../../assets/images/landing.svg'
@@ -12,6 +13,7 @@ import purpleHeartIcon from '../../../assets/images/icons/purple-heart.svg'
 import './styles.css';
 
 function Landing() {
+  const { signOut } = useContext(AuthContext)
   const [totalConnections, setTotalConnections] = useState(0);
 
   useEffect(() => {
@@ -21,6 +23,10 @@ function Landing() {
       setTotalConnections(total)
     })
   }, [])
+
+  function handleSignOut() {
+    signOut();
+  }
 
   return(
     <div id="page-landing">
@@ -44,6 +50,9 @@ function Landing() {
           </Link>
         </div>
 
+        <button onClick={handleSignOut}>
+          Logout
+        </button>
         <span className="total-connections">
           Total de {totalConnections} conexões já realizadas <img src={purpleHeartIcon} alt="Coração Roxo"/>
         </span>
