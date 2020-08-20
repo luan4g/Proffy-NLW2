@@ -3,13 +3,13 @@ import React from 'react';
 import Routes from './Routes/routes';
 
 import './assets/global.css';
-import AuthContext from './contexts/auth';
+import { AuthProvider } from './contexts/auth';
 
 function App() {
   return (
-    <AuthContext.Provider value={{ signed: false }}>
+    <AuthProvider>
       <Routes />
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 
