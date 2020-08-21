@@ -94,7 +94,7 @@ class UsersController {
       passwordResetExpires: now,
     });
 
-    const link = `http://localhost:3333/reset-password/${token}`;
+    const link = `http://localhost:3000/reset-password/${token}`;
 
     const mail = {
       from: "ak1r4gh0st@gmail.com",

@@ -45,18 +45,21 @@ main .input-group .input:first-child {
 }
 
 main .input-group .input:last-child {
-  display: flex;
-  flex-direction: row;
   border-radius: 0 0 0.8rem 0.8rem;
 }
 
-main .input-group .input:last-child .column {
+main .input-group .input .column {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-main .input-group .input:last-child img {
+main .input-group .input.pass {
+  display: flex;
+  flex-direction: row;
+}
+
+main .input-group .input.pass img {
   cursor: pointer;
   margin-right: 1.6rem;
 }
@@ -83,6 +86,10 @@ main .input-group .input:focus-within::after {
   border-radius: 1.6rem;
   margin-top: 1.2rem;
   background-color: var(--color-primary-lighter);
+}
+
+main .input-group #wrong:focus-within {
+  border: 2px solid #e24545
 }
 
 main .row {

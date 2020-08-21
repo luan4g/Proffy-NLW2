@@ -60,7 +60,7 @@ const Signin = () => {
               value={email}
             />
 
-            <div className="input">
+            <div className="input pass">
               <div className="column">
                 <label htmlFor="Senha">Senha</label>
                 <input 
@@ -81,7 +81,7 @@ const Signin = () => {
               <span className="checkmark"></span>
             </label>
 
-            <Link to="/reset-password">Esqueci minha senha</Link>
+            <Link to="/update-password">Esqueci minha senha</Link>
           </div>
 
           <Link to="/home" className="button" onClick={handleSignin}>

@@ -1,25 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import backgroundSuccess from '../../../assets/images/success-background.svg';
 import iconSuccess from '../../../assets/images/icons/success-check-icon.svg';
-
-import './styles.css';
+import { Link } from 'react-router-dom';
 
 function SuccessReset() {
   return (
     <div className="container-success">
-      <img src={backgroundSuccess} alt="Background" className="background" width="75%"/>
+      <img src={backgroundSuccess} alt="background" className="background" width="75%" />
 
       <div className="center">
-        <img src={iconSuccess} alt="Success"/>
+        <img src={iconSuccess} alt="success-check-icon"/>
 
-        <h2>Redefinição Enviada!</h2>
+        <h2>Redefinição concluída!</h2>
+        <p>A partir de agora, a sua senha será a que você acabou de definir.<br/>Agora você poderá fazer login em nossa plataforma, <b>Vamos lá?!</b></p>
 
-        <p>Boa, agora é só checar o e-mail que foi enviado para você<br/>redefinir sua senha e aproveitar os estudos.</p>
       </div>
-
-      <Link to="/home">
+      
+      <Link to="home">
         Fazer Login
       </Link>
     </div>

@@ -11,7 +11,7 @@ const usersController = new UsersController();
 
 routes.post("/create-account", usersController.create);
 routes.post("/signin", usersController.index);
-routes.get("/forgot-password", usersController.update);
+routes.post("/forgot-password", usersController.update);
 routes.put("/reset-password/:token", usersController.reset);
 
 routes.post("/classes", classesController.create);

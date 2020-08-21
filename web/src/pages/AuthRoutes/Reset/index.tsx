@@ -1,55 +1,109 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+import { Link, useHistory, useParams } from 'react-router-dom';
 
-import logo from '../../../assets/images/logo.svg';
+import backIcon from '../../../assets/images/icons/back.svg';
+import logo from '../../../assets/images/logo.svg'
 import background from '../../../assets/images/background.svg';
-import backIcon from '../../../assets/images/icons/back.svg'
-import { Link } from 'react-router-dom';
+import hidePass from '../../../assets/images/icons/hide-password.svg';
+import showPass from '../../../assets/images/icons/show-password.svg';
+import api from '../../../services/api';
+import InputForm from '../../../components/InputForm';
 
-import './styles.css'
+const Reset: React.FC = () => {
+  const history = useHistory();
+  const { token } = useParams()
 
-const Reset = () => {
-  const [inputValue, setInputValue] = useState('');
-  const [buttonState, setButtonState] = useState('');
-  const [linkSuccess, setLinkSuccess] = useState('');
+  const [passVisible, setPassVisible] = useState('password');
+  const [eyeIcon, setEyeIcon] = useState(showPass);
+  const [wrong, setWrong] = useState('')
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirm, setConfirm] = useState('');
 
   useEffect(() => {
-    inputValue === ''
-      ? setButtonState('off')
-      : setButtonState('')
+    password !== confirm 
+     ? setWrong('wrong')
+     : setWrong('normal')
+  }, [password, confirm])
 
-    buttonState === 'off'
-      ? setLinkSuccess('/reset-password')
-      : setLinkSuccess('/reset-success')
-  }, [buttonState, inputValue])
+  function handlePassVisible() {
+    if (passVisible === 'password') {
+      setPassVisible('text');
+      setEyeIcon(hidePass)
+    } else {
+      setPassVisible('password');
+      setEyeIcon(showPass)
+    }
+  }
+
+  async function handleSubmit() {
+    if(password !== '' && password === confirm) {
+      try {
+        await api.put(`reset-password/${token}`, {
+          email,
+          password
+        })
+        history.push('/reset-success')
+      } catch {
+        alert('Erro ao tentar resetar o password! Token inválido ou Sistema fora de funcionamento. Tente novamente em alguns instantes')
+      }
+    } else {
+      alert('Por favor, preencha com dados válidos!');
+    }
+  }
 
   return (
     <div className="all">
       <main>
         <div className="header">
           <Link to="/home">
-            <img src={backIcon} alt="Back"/>
+            <img src={backIcon} alt="back"/>
           </Link>
         </div>
         <div className="form">
-          <h2>Eita, esqueceu sua senha?</h2>
+          <h2>Reset Password</h2>
+          <p>Para redefinir sua senha, basta preencher os dados abaixo</p>
 
-          <p>Não esquenta, vamos dar um jeito nisso.</p>
+          <div className="input-group">
+            <InputForm name="email" label="E-mail" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <div className="input pass">
+              <div className="column">
+                <label htmlFor="pass">Senha</label>
+                <input 
+                  type={passVisible} 
+                  value={password}
+                  placeholder="Senha" 
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <img src={eyeIcon} alt="pass-visible" onClick={handlePassVisible} />
+            </div>
 
-          <div className="input-reset">
-            <input type="text" id='email' placeholder="E-mail" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+            <div className="input pass" id={wrong}>
+              <div className="column">
+                <label htmlFor="confirm-pass">Confirme</label>
+                <input 
+                  type="password" 
+                  value={confirm}
+                  placeholder="Confirme a senha" 
+                  onChange={(e) => setConfirm(e.target.value)}
+                />
+              </div>
+            </div>
           </div>
 
-          <Link to={linkSuccess} className="button" id={buttonState} >
+          <button className="button" onClick={handleSubmit} >
             Enviar
-          </Link>
+          </button>
         </div>
       </main>
       <aside>
         <div className="intro">
-          <img src={logo} alt="Proffy" className="logo"/>
-          <p>Sua plataforma de estudos online</p>
+          <img src={logo} alt="Proffy"/>
+          <p>Sua platforma de estudos online.</p>
         </div>
-        <img src={background} alt="Background" className="background"/>
+        <img className="background" src={background} alt=""/>
       </aside>
     </div>
   )
