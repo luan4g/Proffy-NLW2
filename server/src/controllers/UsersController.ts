@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import db from "../database/connection";
 import jwt from "jsonwebtoken";
+import mailer from "../modules/mailer";
 
 const authConfig = require("../config/auth");
 
@@ -93,13 +94,28 @@ class UsersController {
       passwordResetExpires: now,
     });
 
-    return res
-      .status(200)
-      .send({ message: "Email to reset password has send", token });
+    const link = `http://localhost:3333/reset-password/${token}`;
+
+    const mail = {
+      from: "ak1r4gh0st@gmail.com",
+      to: lowerEmail,
+      subject: "Proffy: Reset Password",
+      template: "auth/forgot-password",
+      context: {
+        link,
+      },
+    };
+
+    mailer.sendMail(mail, (err) => {
+      if (err) return res.status(400).send({ error: err });
+
+      return res.send();
+    });
   }
 
   async reset(req: Request, res: Response) {
-    const { email, password, token } = req.body;
+    const { email, password } = req.body;
+    const { token } = req.params;
 
     const lowerEmail = email.toLowerCase();
 
