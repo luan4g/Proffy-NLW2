@@ -10,6 +10,33 @@
   background: var(--color-primary);
 }
 
+.header {
+  position: absolute;
+  top: 5rem;
+  left: 5rem;
+}
+
+.header button {
+  width: 5.6rem;
+  height: 5.6rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--color-primary-dark);
+  border-radius: 0.8rem;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+
+  transition: 0.5s background;
+}
+
+.header button:hover {
+  background-color: var(--color-primary-darker);
+}
+
 .logo-container {
   height: 15rem;
 }

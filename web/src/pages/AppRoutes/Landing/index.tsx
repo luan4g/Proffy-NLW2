@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom'
+import { FaPowerOff } from 'react-icons/fa'
+import { Link, useHistory } from 'react-router-dom'
 import api from '../../../services/api';
 import AuthContext from '../../../contexts/auth';
 
@@ -13,6 +14,7 @@ import purpleHeartIcon from '../../../assets/images/icons/purple-heart.svg'
 import './styles.css';
 
 function Landing() {
+  const history = useHistory();
   const { signOut } = useContext(AuthContext)
   const [totalConnections, setTotalConnections] = useState(0);
 
@@ -26,10 +28,16 @@ function Landing() {
 
   function handleSignOut() {
     signOut();
+    history.push('/home')
   }
 
   return(
     <div id="page-landing">
+      <div className="header">
+        <button onClick={handleSignOut}>
+          <FaPowerOff size="2.4rem" color="#888" />
+        </button>
+      </div>
       <div id="page-landing-content" className="container">
         <div className="logo-container">
           <img src={logoImg} alt="Proffy"/>
@@ -49,10 +57,7 @@ function Landing() {
             Dar Aulas
           </Link>
         </div>
-
-        <button onClick={handleSignOut}>
-          Logout
-        </button>
+        
         <span className="total-connections">
           Total de {totalConnections} conexões já realizadas <img src={purpleHeartIcon} alt="Coração Roxo"/>
         </span>
